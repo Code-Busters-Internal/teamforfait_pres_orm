@@ -1,0 +1,27 @@
+
+Instructions pour la creation initiale de la db
+
+CL:
+dotnet tool install --global dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore.Design
+//dotnet ef migrations add InitialCreate //Pas pour la ci
+dotnet ef database update
+dotnet ef database update InitialCreate --connection "Host=localhost;Database=Hermes;Username=postgres;Password=admin"
+
+Visual Studio:
+Sur package manager console dans visual studio (dans le menu dans view)
+
+//normalement deja ok: Install-Package Microsoft.EntityFrameworkCore.Tools
+//Add-Migration InitialCreate -Args "Host=localhost;Database=Hermes;Username=postgres;Password=admin" //Pas pour la ci
+Update-Database -Args "Host=localhost;Database=Hermes;Username=postgres;Password=admin"
+
+Pour Adrien tu mets juste:
+soit Update-Database dans visual studio dans l'onglet Package Manager Console
+soit en CLI : dotnet ef database update
+
+Les tests pour aller vite et remplir la db:
+IntegrationDb/InitDbTests/FillReferential rempli les referentiels de donnes sur la base locale, a faire avant toute chose
+DocumentParsing/HermesImportServicesTests/PersistFromDocumentAssetPart rempli la db avec un set de documents excels
+
+Other db simple tools
+ask SELECT * FROM pg_stat_activity on postgres to see the sql queries happening
