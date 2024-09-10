@@ -8,9 +8,9 @@
  Presentation du principe des ORM avec exemple EF/Postgres en .net core
 
 
-#Content
+# Content
 
-##Whats an ORM
+## Whats an ORM
 __Goal__
 
 Object-Relational Mapping (ORM) is a programming technique that facilitates the interaction between a relational database and a programming language. It acts as a bridge between the logical, object-oriented representation of data in the code and the physical, relational structure in a database.
@@ -33,7 +33,7 @@ _Mapping come inherently with a computing cost, and a **lot** more in attached m
 
 _You can map a lot more than tables, colums and row, ex trigger or procedures_
 
-##EF
+## EF
 __Configuration__
 
 Configuring EF is tuning how the request generation and the mapping is handled.
@@ -79,11 +79,12 @@ Solution: Detached.
 The problem if detached mode but no versionning
 Solution: We check the version when we reattach. Version is incremented.
 
-__Caveats__
+## Final Notes and Caveats
 
 Proxy and the infinite requests
+
 Migrations and existing data
 
-##Final Notes
-
 ORM come with a computing cost. Micro-ORM without extended function or attached mode can be a interresting alternative.
+
+Detached mode and the join nightmare
