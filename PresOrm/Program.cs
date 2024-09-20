@@ -34,6 +34,8 @@ while (!stop)
     Console.WriteLine("B - Show Brands");
     Console.WriteLine("N - Show Brands with cars");
     Console.WriteLine("V - Show Cars specialised");
+    Console.WriteLine("S - Show EntityState");
+    Console.WriteLine("A - Add brand no commit");
     Console.Write("Enter option: ");
 
     var key = Console.ReadKey();
@@ -71,12 +73,30 @@ while (!stop)
                 new ProcessShowCarsSpecializedRequest().Start(context);
                 break;
 
+            case ConsoleKey.S:
+                new ProcessShowEntityState().Start(context);
+                break;
+
+            case ConsoleKey.A:
+                new ProcessAddBrandNoCommit().Start(context);
+                break;
+
             case ConsoleKey.Escape:
                 stop = true;
                 break;
         }
     }
-    catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+    catch (Exception ex) { Console.ForegroundColor = ConsoleColor.Red;
+
+        foreach (var entry in context.ChangeTracker.Entries())
+        {
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(entry.Entity);
+            Console.WriteLine(entry.State);
+        }
+        Console.ForegroundColor = ConsoleColor.Red; 
+        Console.WriteLine(ex.ToString()); Console.ReadKey(); }
 }
 
 

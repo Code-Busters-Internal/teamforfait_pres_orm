@@ -23,5 +23,17 @@ namespace PresOrm.Data.Repositories
                 .Include(e => e.Brand)
                 .ToList();
         }
+
+
+
+        public List<EntityCar> ExampleComplexe()
+        {
+            return DbSet
+                .AsNoTracking()
+                .Where(e => e.Brand.Name.StartsWith("M"))
+                .OrderBy(e => e.Brand.Name)
+                .ThenByDescending(e => e.ModelYear)
+                .ToList();
+        }
     }
 }

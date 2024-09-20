@@ -28,6 +28,11 @@ namespace PresOrm.Data.Repositories
             return DbSet.Find(id);
         }
 
+        public void Add(TEntity entity)
+        {
+            DbSet.Add(entity);
+        }
+
         public void Create(TEntity entity)
         {
             DbSet.Add(entity);

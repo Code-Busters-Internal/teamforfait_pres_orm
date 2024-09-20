@@ -8,5 +8,10 @@ namespace PresOrm.Data.Repositories
         public RepositoryBrand(DbContext db) : base(db)
         {
         }
+
+        public EntityBrand? GetByName(string name)
+        {
+            return DbSet.FirstOrDefault(e => e.Name== name);
+        }
     }
 }

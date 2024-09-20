@@ -19,6 +19,7 @@ namespace PresOrm.Data
         public bool IsLazyOn { get; }
 
         public DbSet<EntityCar> Cars { get; set; }
+        public DbSet<EntityBrand> Brands { get; set; }
 
         public ContextPresOrm(NpgsqlDataSource npgsqlDataSource, bool isLazyOn)
         {
